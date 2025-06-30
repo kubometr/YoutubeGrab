@@ -3,17 +3,7 @@ import re
 import asyncio
 from telethon import TelegramClient
 from yt_dlp import YoutubeDL
-
-API_ID = 26239288
-API_HASH = "ff1c94466d5e504193b35b8843ed316e"
-SESSION_NAME = "my_session"
-
-SUPERGROUP_ID = -1002433338673
-TOPIC_ID = 8013
-
-BASE_DIR = "/home/your_username/tg_youtube_grabber"
-LINKS_PATH = f"{BASE_DIR}/links.txt"
-TEMP_DIR = f"{BASE_DIR}/temp_videos"
+from config import *
 
 def sanitize_filename(name: str) -> str:
     return re.sub(r'[\\/:"*?<>|]+', '_', name)
@@ -88,10 +78,8 @@ async def main():
             error_count += 1
             remaining_links.append(url)
 
-    # Обновляем файл ссылок — удаляем обработанные
     save_links(remaining_links)
 
-    # Уведомление об итогах
     summary = (
         "✅ Завершено:\n"
         f"🟢 Успешно: {success_count}\n"
