@@ -1,14 +1,18 @@
 # config.py
+import os
+from dotenv import load_dotenv
 
-API_ID = 26239288
-API_HASH = "ff1c94466d5e504193b35b8843ed316e"
-SESSION_NAME = "my_session"
+load_dotenv()
+
+API_ID = int(os.getenv("API_ID"))
+API_HASH = os.getenv("API_HASH")
+SESSION_NAME = os.getenv("SESSION_NAME", "anon")
 
 # Telegram
-SUPERGROUP_ID = -1002433338673
-TOPIC_ID = 8013
+SUPERGROUP_ID = int(os.getenv("SUPERGROUP_ID"))
+TOPIC_ID = int(os.getenv("TOPIC_ID"))
 
 # Пути
-BASE_DIR = "/home/kubometr/YoutubeGrab"
-LINKS_PATH = f"{BASE_DIR}/links.txt"
-TEMP_DIR = f"{BASE_DIR}/temp_videos"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LINKS_PATH = os.path.join(BASE_DIR, "links.txt")
+TEMP_DIR = os.path.join(BASE_DIR, "temp_videos")
