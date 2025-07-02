@@ -1,7 +1,0 @@
-yt-dlp
-requests
-beautifulsoup4
-pytube
-google-api-python-client
-google-auth
-python-dotenv
